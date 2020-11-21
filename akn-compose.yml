@@ -1,7 +1,7 @@
 version: "3.8"
 
 services: 
-  akn-frontend: 
+  frontend: 
     image: akhil1994/akn-frontend
     ports: 
       - "80:80"
@@ -10,18 +10,19 @@ services:
     deploy:
       replicas: 1
       restart_policy:
-        condition: on-failure
+        condition: always
 
-  akn-backend:
+  backend:
     image: akhil1994/akn-backend
-    ports:
-      - "8080:8080"
     environment:
       SPRING.DATASOURCE.URL: jdbc:postgresql://db:5432/akn-db?user=postgres&password=postgres
     networks:
+      - frontend
       - backend
     deploy:
       replicas: 1
+      restart_policy:
+        condition: always
     depends_on:
       - db
   
@@ -35,6 +36,10 @@ services:
       - db-data:/var/lib/postgresql/data
     networks:
       - backend
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: always
   
 networks:
   frontend:
