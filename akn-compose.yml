@@ -22,7 +22,7 @@ services:
       - backend
     deploy:
       replicas: 1
-    depends-on:
+    depends_on:
       - db
   
   db:
