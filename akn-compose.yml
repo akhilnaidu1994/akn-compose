@@ -17,7 +17,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING.DATASOURCE.URL: jdbc:postgresql://db:5432/akn-db?user=postgres&password=postgres
+      SPRING.DATASOURCE.URL: jdbc:postgresql://db:5432/akn-db?sslmode=require&user=postgres&password=postgres
     networks:
       - backend
     deploy:
