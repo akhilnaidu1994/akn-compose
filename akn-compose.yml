@@ -35,12 +35,6 @@ services:
       - db-data:/var/lib/postgresql/data
     networks:
       - backend
-      
-  watchtower:
-    image: containrrr/watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 30 --cleanup --debug
   
 networks:
   frontend:
