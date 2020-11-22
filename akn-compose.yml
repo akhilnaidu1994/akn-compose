@@ -7,6 +7,8 @@ services:
       - "80:80"
     networks:
       - frontend
+    volumes:
+      - /home/opc/certs:/app/certs
     deploy:
       replicas: 1
 
