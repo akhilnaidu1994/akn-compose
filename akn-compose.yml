@@ -9,7 +9,7 @@ services:
     networks:
       - frontend
     volumes:
-      - /home/opc/certs:/app/certs
+      - /home/opc/letsencrypt/volumes/etc/letsencrypt/live/akhilnaidu.tech:/app/certs
     deploy:
       replicas: 1
 
