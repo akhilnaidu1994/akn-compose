@@ -37,6 +37,20 @@ services:
       - backend
     deploy:
       replicas: 1
+      placement: 
+        constraints:
+          - "node.labels.region==instance2"
+
+  rabbitmq:
+    image: akhil1994/rabbitmq
+    environment:
+      hostname: "myrabbit"
+    ports: 
+      - "61613:61613"
+    networks:
+      - frontend
+    deploy:
+      replicas: 1
   
 networks:
   frontend:
